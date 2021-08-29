@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.JhonnyBravo</groupId>
     <artifactId>java-se-template-bom</artifactId>
-    <version>master-SNAPSHOT</version>
+    <version>weld-junit4-SNAPSHOT</version>
     <properties>
         <jdk.version>1.8</jdk.version>
         <encoding>UTF-8</encoding>
