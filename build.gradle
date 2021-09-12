@@ -1,0 +1,55 @@
+plugins {
+    // Apply the java-library plugin to add support for Java Library
+    id 'java-platform'
+    id 'eclipse'
+    id 'maven-publish'
+}
+
+repositories {
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+    maven {url 'https://jitpack.io'}
+}
+
+javaPlatform {
+    allowDependencies()
+}
+
+dependencies {
+    constraints {
+        api group: 'gnu.getopt', name: 'java-getopt', version: '1.0.13'
+        api group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+        api group: 'org.hibernate.validator', name: 'hibernate-validator', version: '7.0.1.Final'
+        api group: 'org.glassfish', name: 'jakarta.el', version: '4.0.1'
+        api 'junit:junit:4.13.2'
+    }
+}
+
+group='com.github.JhonnyBravo'
+version='gradle-SNAPSHOT'
+
+publishing{
+    publications{
+        maven(MavenPublication){
+            artifactId='java-se-template-bom'
+            from components.javaPlatform
+            versionMapping{
+                usage('java-runtime'){
+                    fromResolutionResult()
+                }
+            }
+            pom{
+                name='java-se-template-bom'
+                description='Java SE プロジェクト用の BOM プロジェクト'
+                url='https://github.com/JhonnyBravo/java-se-template-bom'
+            }
+        }
+    }
+    repositories{
+        maven{
+            def releasesRepoUrl=layout.buildDirectory.dir('repos/releases')
+            def snapshotsRepoUrl=layout.buildDirectory.dir('repos/snapshots')
+            url=version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+        }
+    }
+}
