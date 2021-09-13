@@ -1,7 +1,8 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
-    id 'java-platform'
+    id 'java-library'
     id 'eclipse'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'maven-publish'
 }
 
@@ -11,29 +12,28 @@ repositories {
     maven {url 'https://jitpack.io'}
 }
 
-javaPlatform {
-    allowDependencies()
-}
-
-dependencies {
-    constraints {
-        api group: 'gnu.getopt', name: 'java-getopt', version: '1.0.13'
-        api group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
-        api group: 'org.hibernate.validator', name: 'hibernate-validator', version: '7.0.1.Final'
-        api group: 'org.glassfish', name: 'jakarta.el', version: '4.0.1'
-        api 'junit:junit:4.13.2'
+dependencyManagement {
+    dependencies {
+        dependency 'gnu.getopt:java-getopt:1.0.13'
+        dependency 'ch.qos.logback:logback-classic:1.2.3'
+        dependency 'org.hibernate.validator:hibernate-validator:7.0.1.Final'
+        dependency 'org.glassfish:jakarta.el:4.0.1'
+        dependency 'junit:junit:4.13.2'
     }
 }
 
+
 group='com.github.JhonnyBravo'
-version='gradle-SNAPSHOT'
+version='dependency-management-SNAPSHOT'
 
 publishing{
     publications{
-        maven(MavenPublication){
+        mavenJava(MavenPublication){
             artifactId='java-se-template-bom'
-            from components.javaPlatform
             versionMapping{
+                usage('java-api'){
+                    fromResolutionOf('runtimeClasspath')
+                }
                 usage('java-runtime'){
                     fromResolutionResult()
                 }
