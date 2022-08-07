@@ -24,7 +24,7 @@ dependencyManagement {
 
 
 group='com.github.JhonnyBravo'
-version='master-SNAPSHOT'
+version='dependency-management-SNAPSHOT'
 
 publishing{
     publications{
