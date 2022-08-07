@@ -16,7 +16,7 @@ dependencyManagement {
     dependencies {
         dependency 'gnu.getopt:java-getopt:1.0.13'
         dependency 'ch.qos.logback:logback-classic:1.2.11'
-        dependency 'org.hibernate.validator:hibernate-validator:7.0.1.Final'
+        dependency 'org.hibernate.validator:hibernate-validator:7.0.5.Final'
         dependency 'org.glassfish:jakarta.el:4.0.2'
         dependency 'junit:junit:4.13.2'
     }
