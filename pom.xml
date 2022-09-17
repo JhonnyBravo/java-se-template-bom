@@ -8,7 +8,7 @@
     <artifactId>java-se-template-bom</artifactId>
     <version>weld-junit4-SNAPSHOT</version>
     <properties>
-        <jdk.version>1.9</jdk.version>
+        <jdk.version>11</jdk.version>
         <encoding>UTF-8</encoding>
         <maven.surefire.version>3.0.0-M5</maven.surefire.version>
         <maven.checkstyle.version>3.1.2</maven.checkstyle.version>
