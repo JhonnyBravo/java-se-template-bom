@@ -25,7 +25,7 @@ dependencyManagement {
 
 
 group='com.github.JhonnyBravo'
-version='dependency-management-SNAPSHOT'
+version='Java17-gradle-7.6-SNAPSHOT'
 sourceCompatibility=17
 targetCompatibility=17
 
