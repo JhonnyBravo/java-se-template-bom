@@ -8,6 +8,7 @@ plugins {
 
 repositories {
     // You can declare any Maven/Ivy/file repository here.
+    mavenCentral()
     jcenter()
     maven {url 'https://jitpack.io'}
 }
@@ -25,6 +26,8 @@ dependencyManagement {
 
 group='com.github.JhonnyBravo'
 version='master-SNAPSHOT'
+sourceCompatibility=17
+targetCompatibility=17
 
 publishing{
     publications{
@@ -50,6 +53,14 @@ publishing{
             def releasesRepoUrl=layout.buildDirectory.dir('repos/releases')
             def snapshotsRepoUrl=layout.buildDirectory.dir('repos/snapshots')
             url=version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+        }
+        maven{
+            name='GitHubPackages'
+            url=uri('https://maven.pkg.github.com/jhonnybravo/java-se-template-bom')
+            credentials{
+                username=project.findProperty('gpr.user') ?: System.getenv('USERNAME')
+                password=project.findProperty('gpr.key') ?: System.getenv('TOKEN')
+            }
         }
     }
 }
